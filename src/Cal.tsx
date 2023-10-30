@@ -171,7 +171,7 @@ const Cal = () => {
       
       </div>
       <div className = " w-72 h-72" >
-      <Piechart estreturns = {`${est_returns}`}  invested = {`${totalinvestement}`} />
+      <Piechart estreturns  = {`${est_returns}`}  invested = {`${totalinvestement}`} />
       </div>
       
       </div>

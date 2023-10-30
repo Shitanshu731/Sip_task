@@ -6,7 +6,8 @@ const Navbar = () => {
     function handleClick(){
         setBtn(btn=>!btn);
        }
-       let toggleClassCheck = btn ? 'small-sidebar':null; 
+       let toggleClassCheck: string | null = btn ? 'small-sidebar' : null;
+ 
 
   return (
    
