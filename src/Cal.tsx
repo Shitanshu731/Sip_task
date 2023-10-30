@@ -11,9 +11,9 @@ const Cal = () => {
   const [ratenumber, setratenumber] = useState(1);
   const [year, setyear] = useState(1);
   const [yearnumber, setyearnumber] = useState(1);
-  const [totalinvestement,settotalinvestement] = useState(0);
-  const [est_returns,setest_returns] = useState(0);
-  const [totalvalue,settotalvalue] = useState(0);
+  const [totalinvestement,settotalinvestement] = useState(6000);
+  const [est_returns,setest_returns] = useState(33);
+  const [totalvalue,settotalvalue] = useState(6033);
 
   
 
@@ -22,18 +22,18 @@ const Cal = () => {
     const newValue: number = parseInt(e.target.value);
     setmonthlyInvestement(newValue);
     setmonthlyInvestementnumber(newValue);
-    settotalinvestement(newValue*12*year);
-    settotalvalue(newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))));
-    setest_returns((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*year));
+    settotalinvestement(Math.ceil((newValue*12*year)));
+    settotalvalue(Math.ceil((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))));
+    setest_returns(Math.ceil(((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*year))));
   };
   const handleNumberChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     const newValue: number = parseInt(e.target.value);
     if (newValue <= 100000 && newValue >= 500) {
       setmonthlyInvestementnumber(newValue);
       setmonthlyInvestement(newValue);
-      settotalinvestement(newValue*12*year);
-      settotalvalue(newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))));
-      setest_returns((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*year));
+      settotalinvestement(Math.ceil((newValue*12*year)));
+      settotalvalue(Math.ceil((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))));
+      setest_returns(Math.ceil(((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*year))));
     }
   };
   const handleRangeChange1 = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -41,8 +41,8 @@ const Cal = () => {
     
     setrate(newValue);
     setratenumber(newValue);
-    settotalvalue(monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))));
-    setest_returns((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))-totalinvestement);
+    settotalvalue(Math.ceil((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))));
+    setest_returns(Math.ceil(((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))-totalinvestement)));
   };
   const handleNumberChange1 = (e : React.ChangeEvent<HTMLInputElement>) => {
     const newValue: number = parseInt(e.target.value);
@@ -50,8 +50,8 @@ const Cal = () => {
       setratenumber(newValue);
       setrate(newValue);
       settotalinvestement(newValue);
-      settotalvalue(monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))));
-      setest_returns((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))-totalinvestement);
+      settotalvalue(Math.ceil((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))));
+      setest_returns(Math.ceil(((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))-totalinvestement)));
     }
   };
 
@@ -60,9 +60,9 @@ const Cal = () => {
     
     setyear(newValue);
     setyearnumber(newValue);
-    settotalinvestement(newValue*12*monthlyInvestement);
-    settotalvalue(monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))));
-    setest_returns((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*monthlyInvestement));
+    settotalinvestement(Math.ceil((newValue*12*monthlyInvestement)));
+    settotalvalue(Math.ceil((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))));
+    setest_returns(Math.ceil(((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*monthlyInvestement))));
     
   };
   const handleNumberChange2 = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -70,12 +70,14 @@ const Cal = () => {
     if (newValue <= 40 && newValue >= 1) {
       setyearnumber(newValue);
       setyear(newValue);
-      setmonthlyInvestement(newValue*12*monthlyInvestement);
+      settotalinvestement(Math.ceil((newValue*12*monthlyInvestement)));
       settotalvalue(newValue);
-      settotalvalue(monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))));
-      setest_returns((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*monthlyInvestement));
+      settotalvalue(Math.ceil((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))));
+      setest_returns(Math.ceil(((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*monthlyInvestement))));
     }
   };
+        const est_returns1: number = est_returns;
+        const totalinvestement1: number = totalinvestement;
 
   return (
 <div className = "  sm:mt-[1%] duration-75    ">
@@ -171,7 +173,7 @@ const Cal = () => {
       
       </div>
       <div className = " w-72 h-72" >
-      <Piechart estreturns  = {`${est_returns}`}  invested = {`${totalinvestement}`} />
+      <Piechart estreturns  = {est_returns1}  invested = {totalinvestement1} />
       </div>
       
       </div>
