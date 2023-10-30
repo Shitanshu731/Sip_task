@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 import Piechart from './Piechart';
 
@@ -18,16 +18,16 @@ const Cal = () => {
   
 
 
-  const handleRangeChange = (e) => {
-    const newValue = e.target.value;
+  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue: number = parseInt(e.target.value);
     setmonthlyInvestement(newValue);
     setmonthlyInvestementnumber(newValue);
     settotalinvestement(newValue*12*year);
     settotalvalue(newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))));
     setest_returns((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*year));
   };
-  const handleNumberChange = (e) => {
-    const newValue = e.target.value;
+  const handleNumberChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const newValue: number = parseInt(e.target.value);
     if (newValue <= 100000 && newValue >= 500) {
       setmonthlyInvestementnumber(newValue);
       setmonthlyInvestement(newValue);
@@ -36,16 +36,16 @@ const Cal = () => {
       setest_returns((newValue * (Math.pow(1 + rate / (12 * 100), 12 * year) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*year));
     }
   };
-  const handleRangeChange1 = (e) => {
-    const newValue = e.target.value;
+  const handleRangeChange1 = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const newValue: number = parseInt(e.target.value);
     
     setrate(newValue);
     setratenumber(newValue);
     settotalvalue(monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))));
     setest_returns((monthlyInvestement * (Math.pow(1 + newValue / (12 * 100), 12 * year) - 1) * ((1 + newValue/ (12 * 100)) / (newValue / (12 * 100))))-totalinvestement);
   };
-  const handleNumberChange1 = (e) => {
-    const newValue = e.target.value;
+  const handleNumberChange1 = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const newValue: number = parseInt(e.target.value);
     if (newValue <= 30 && newValue >= 1) {
       setratenumber(newValue);
       setrate(newValue);
@@ -55,8 +55,8 @@ const Cal = () => {
     }
   };
 
-  const handleRangeChange2 = (e) => {
-    const newValue = e.target.value;
+  const handleRangeChange2 = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const newValue: number = parseInt(e.target.value);
     
     setyear(newValue);
     setyearnumber(newValue);
@@ -65,8 +65,8 @@ const Cal = () => {
     setest_returns((monthlyInvestement * (Math.pow(1 + rate / (12 * 100), 12 * newValue) - 1) * ((1 + rate / (12 * 100)) / (rate / (12 * 100))))-(newValue*12*monthlyInvestement));
     
   };
-  const handleNumberChange2 = (e) => {
-    const newValue = e.target.value;
+  const handleNumberChange2 = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const newValue: number = parseInt(e.target.value);
     if (newValue <= 40 && newValue >= 1) {
       setyearnumber(newValue);
       setyear(newValue);
